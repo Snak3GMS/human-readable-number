@@ -13,7 +13,7 @@ module.exports = function toReadable (number) {
         if (tens<2) {
             numTensAndOnes = tens*10 + (+ones);
             return [
-                hundr == 0 ? '' :(ones == 0 & tens == 0) ? oneToNineteen[hundr] + ' hundred' : oneToNineteen[hundr] + ' hundred ' ,
+                hundr == 0 ? '' : oneToNineteen[hundr] + ' hundred ' ,
                 (ones == 0 && tens == 0 && hundr == 0) ? 'zero' : oneToNineteen[numTensAndOnes]
             ]
         }
@@ -24,5 +24,5 @@ module.exports = function toReadable (number) {
         ];
     }    
     let arr = (number < 100 && number > 9) ? ('0'+number).split('') : (number < 10) ? ('00'+number).split('') :(''+number).split('');
-    return makeWord(arr).join('');
+    return makeWord(arr).join('').trim();
 }
